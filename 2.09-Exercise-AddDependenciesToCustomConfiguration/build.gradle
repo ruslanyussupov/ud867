@@ -28,3 +28,19 @@ apply plugin: 'java'
 repositories {
     mavenCentral()
 }
+
+configurations {
+	deps
+	compile.extendsFrom deps
+}
+
+dependencies {
+	deps 'com.google.guava:guava:25.0-jre'
+}
+
+task zipDeps(type: Zip) {
+	version = "4.2"
+	baseName = "dependencyArchive"
+	classifier = "deps"
+	from configurations.deps
+}

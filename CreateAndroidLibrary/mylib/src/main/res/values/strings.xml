@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Lib</string>
+    <string name="joke">Some funny joke.</string>
+</resources>
