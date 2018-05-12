@@ -19,7 +19,7 @@ Exercises:
 6. Uncomment and run the "derpy" task below, then use "--stacktrace" to find
    the error.
 7. CHALLENGE! Log "Catch me if you can" at DEBUG level, then use grep (or
-    findstr on Windows) to find that message in the logs.
+    findstr on Windows) to find that message in the logs./
 
 */
 
@@ -28,12 +28,16 @@ task hello(type: HelloTask)
 class HelloTask extends DefaultTask {
     @TaskAction
     void doAction() {
+        logger.info 'Begin action'
+        logger.lifecycle 'Hello World'
+        logger.info 'End action'
+        logger.debug 'Catch me if you can'
         println 'Hello World'
     }
 }
 
-/*
+
 task derpy << {
     primp "Herp de derp"
 }
-*/
+
