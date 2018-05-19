@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.displayjoke.JokeActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/joke_tv"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        tools:context="com.example.displayjoke.JokeActivity">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:text="@string/category_label"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/category_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            tools:text="Blonde Jokes"
+            app:layout_constraintLeft_toRightOf="@id/category_label"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <RatingBar
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            style="?android:attr/ratingBarStyleSmall"
+            tools:rating="2.57"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/joke_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            tools:text="At a dinner party, several of the guests were arguing whether men or women were more trustworthy. 'No woman,' said one man, scornfully, 'can keep a secret.' 'I don't know about that,' answered a blonde woman guest. 'I have kept my age a secret since I was twenty-one.' 'You'll let it out some day,' the man insisted. 'I hardly think so!' responded the blonde lady. 'When a woman has kept a secret for twenty-seven years, she can keep it forever.'"
+            app:layout_constraintTop_toBottomOf="@id/rating"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
+

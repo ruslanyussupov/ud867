@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Display Joke</string>
+    <string name="category_label">Category:</string>
 </resources>
