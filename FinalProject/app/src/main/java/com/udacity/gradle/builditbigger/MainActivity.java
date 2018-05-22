@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.annotation.VisibleForTesting;
 import android.support.constraint.Group;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final String BUNDLE_JOKES = "jokes";
+
+    private final CountingIdlingResource mIdlingResource = new CountingIdlingResource("mMyApiService");
 
     private static MyApi mMyApiService;
     private List<Joke> mJokes;
@@ -117,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected List<Joke> doInBackground(Void... params) {
 
+            mIdlingResource.increment();
+
             showProgressBar();
 
             if (mMyApiService == null) {  // Only do this once
@@ -159,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Joke> result) {
 
+            mIdlingResource.decrement();
+
             hideProgressBar();
 
             mJokes = result;
@@ -175,6 +183,11 @@ public class MainActivity extends AppCompatActivity {
     private void hideProgressBar() {
         mLoadingPb.setVisibility(View.GONE);
         mContent.setVisibility(View.VISIBLE);
+    }
+
+    @VisibleForTesting
+    public CountingIdlingResource getIdlingResource() {
+        return mIdlingResource;
     }
 
 }

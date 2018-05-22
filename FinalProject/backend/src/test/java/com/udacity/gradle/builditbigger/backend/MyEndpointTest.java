@@ -9,7 +9,7 @@ public class MyEndpointTest {
     @Test
     public void getJokesJson() throws Exception {
 
-        Assert.assertNotNull(new MyEndpoint().getJokesJson());
+        Assert.assertNotNull(new MyEndpoint().getJokesJson().getJson());
 
     }
 

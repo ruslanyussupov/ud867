@@ -2,6 +2,7 @@ package com.example.jokes;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,8 +10,7 @@ import java.io.IOException;
 
 public class Data {
 
-    private static final String DATA_PATH = "jokes/data/data.json";
-
+    private static final String DATA_PATH = "src/data/data.json";
 
     public static String getJokesJson() {
 
